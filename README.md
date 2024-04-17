@@ -85,4 +85,8 @@ This is the place for you to write reflections:
 1. Menurut pemahaman saya, pemisahan "Service" dan "Repository" dari sebuah model perlu dilakukan untuk memenuhi salah satu prinsip desain yaitu Single Responsibility Principle. Dengan melakukan pemisahan ini juga dapat meningkatkan loose coupling sehingga dependency antarsuatu bagian dengan bagian lain tidak terlalu tinggi.
 2. Jika kita hanya menggunakan model, maka kode yang dihasilkan akan sangat kompleks dan berantakan. Hal ini karena setiap model akan mengelola penyimpanan data sekaligus business logic. Interaksi antarketiga model akan sangat kompleks sehingga harus dilakukan aggregation. Akibatnya, kompleksitas kode akan meningkat.
 3. Postman membantu saya dalam mengetes projek yang sedang saya jalankan. Dengan menggunakan Postman, saya dapat mencocokan antara input dan output yang diharapkan serta bagaimana data tersebut diproses di web yang sedang dibuat.
+
 #### Reflection Publisher-3
+1. Dalam kasus tutorial kali ini, kita menggunakan variasi Push. Hal ini dapat dilihat dari NotificationService yang selalu mem-push data ke subscriber setiap adanya update.
+2. Keuntungan jika kita menggunakan variasi lain, yang dalam hal ini Pull adalah subscriber hanya perlu melakukan request update saat dibutuhkan sehingga beban yang dilakukan berkurang. Kekurangan dari Pull adalah bisa terjadi kesalahan jika subscriber tidak mengambil data perubahan dan ada perubahan lain.
+3. Jika kita memutuskan untuk tidak menggunakan multi-threading dalam notifikasi proses, pengiriman notifikasi akan dilakukan secara satu per satu. Hal ini akan memperlambat waktu pengiriman notifikasi karena notifikasi tidak bisa dikirimkan sekaligus. Hal ini akan merugikan subscriber di urutan paling terakir.
