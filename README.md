@@ -82,5 +82,7 @@ This is the place for you to write reflections:
 3. Menurut pemahaman saya, dalam kasus ini kita tetap memerlukan DashMap. Hal ini dikarenakan penggunaan HashMap pada Rust tidak bersifat thread-safe. Beberapa thread berbeda akan mengakses SUBSCRIBER secara bersamaan sehingga perlu dipastikan keamanannya dengan DashMap. Dengan menggunakan DashMap ini kita juga bisa memastikan bahwa hanya satu thread yang memodifikasi satu Subscriber dalam satu waktu. Hal ini menjamin keamanan subscriber yang dimodifikasi.
 
 #### Reflection Publisher-2
-
+1. Menurut pemahaman saya, pemisahan "Service" dan "Repository" dari sebuah model perlu dilakukan untuk memenuhi salah satu prinsip desain yaitu Single Responsibility Principle. Dengan melakukan pemisahan ini juga dapat meningkatkan loose coupling sehingga dependency antarsuatu bagian dengan bagian lain tidak terlalu tinggi.
+2. Jika kita hanya menggunakan model, maka kode yang dihasilkan akan sangat kompleks dan berantakan. Hal ini karena setiap model akan mengelola penyimpanan data sekaligus business logic. Interaksi antarketiga model akan sangat kompleks sehingga harus dilakukan aggregation. Akibatnya, kompleksitas kode akan meningkat.
+3. Postman membantu saya dalam mengetes projek yang sedang saya jalankan. Dengan menggunakan Postman, saya dapat mencocokan antara input dan output yang diharapkan serta bagaimana data tersebut diproses di web yang sedang dibuat.
 #### Reflection Publisher-3
