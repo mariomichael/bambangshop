@@ -77,6 +77,9 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Dalam kasus BambangShop, menurut saya penggunaan single model `struct` sudah cukup. Hal ini dikarenakan ukuran projek ini masih terbilang kecil dan tidak banyak dependencies dari fitur ini. Selain itu, semua subscriber dapat dikatakan berperilaku identik tanpa adanya hal khusus yang dapat dilakukan salah satu subscriber. Oleh karena itu satu struktur Subscriber cukup untuk menangani kasus ini. Penggunaan interface lebih baik dilakukan untuk projek yang lebih besar dan adanya kebutuhan khusus untuk mengangani setiap objek secara spesifik.
+2. Menurut saya, penggunaan Vec tidak akan cukup. Hal ini dikarenakan kode kita akan menjadi lebih kompleks sehingga susah di-maintain. Penggunaanya memungkinkan terjadinya duplikasi id sehingga id akan kehilangan sifat keunikannya. Oleh karena itu pada kasus ini lebih baik digunakan DashMap. Dengan menggunakan DashMap, kita bisa menyimpan setiap objek dengan keynya secara unik.
+3. Menurut pemahaman saya, dalam kasus ini kita tetap memerlukan DashMap. Hal ini dikarenakan penggunaan HashMap pada Rust tidak bersifat thread-safe. Beberapa thread berbeda akan mengakses SUBSCRIBER secara bersamaan sehingga perlu dipastikan keamanannya dengan DashMap. Dengan menggunakan DashMap ini kita juga bisa memastikan bahwa hanya satu thread yang memodifikasi satu Subscriber dalam satu waktu. Hal ini menjamin keamanan subscriber yang dimodifikasi.
 
 #### Reflection Publisher-2
 
